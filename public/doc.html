@@ -1,0 +1,730 @@
+<html>
+	<head>
+		<link rel="icon" type="image/svg+xml" href="./others/favicon.png" />
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background-color: #f9f9f9;
+				padding: 20px;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-weight: bold;
+				margin-bottom: 18px;
+				color: #333;
+			}
+
+			h1,
+			h2 {
+				margin-bottom: 35px;
+			}
+
+			h1 {
+				font-size: 36px;
+			}
+
+			h2 {
+				font-size: 28px;
+			}
+
+			h3 {
+				font-size: 21px;
+			}
+
+			h4 {
+				font-size: 17px;
+				margin-top: 20px;
+			}
+
+			h5 {
+				font-size: 15px;
+			}
+
+			h6 {
+				font-size: 13px;
+			}
+
+			a {
+				text-decoration: none;
+				color: #00698f;
+			}
+
+			a:hover {
+				color: #003d5d;
+			}
+
+			.important {
+				color: #ff3737;
+				font-weight: bold;
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+				margin: 10px 0;
+			}
+
+			ul,
+			ol {
+				margin: 10px 0;
+				padding: 0 0 0 20px;
+			}
+
+			li {
+				margin-bottom: 10px;
+			}
+
+			code {
+				font-family: monospace;
+				background-color: #f7f7f7;
+				padding: 2px 4px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				color: #8b0a1a;
+			}
+
+			pre code {
+				display: block;
+				padding: 10px;
+				overflow: auto;
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			th,
+			td {
+				border: 1px solid #ddd;
+				padding: 10px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f0f0f0;
+			}
+		</style>
+	</head>
+	<body>
+		<h2 id="tajify-api-documentation">Tajify API Documentation</h2>
+		<h4 id="api-endpoints-">API ENDPOINTS:</h4>
+		<p>API BASE URL: <a href="https://api-tajify-production.up.railway.app">https://api-tajify-production.up.railway.app</a></p>
+		<h4 id="api-test-login-details">API Test Login Details</h4>
+		<ul>
+			<li><strong>identifier</strong> <code>08157113270 or user@example.com</code></li>
+			<li><strong>password</strong> <code>test1234</code></li>
+		</ul>
+		<h4 id="authentication-">Authentication:</h4>
+		<ul>
+			<li><strong>POST</strong> <code>/api/auth/login</code><br />Authenticates a user and returns a token.</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"08157113270"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"test1234"</span>
+}
+</code></pre>
+		<p>or</p>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"user@example.com"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"test1234"</span>
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>Response:</strong></p>
+				<ul>
+					<li><strong>200 OK:</strong> Login successful</li>
+					<li><strong>400 Bad Request:</strong> Account does not or no longer exist</li>
+					<li><strong>400 Bad Request:</strong> User details incorrect</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>Example Response:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Login successful"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"user"</span>: {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"67672cfe46cebe48315a9104"</span>,
+            <span class="hljs-attr">"firstname"</span>: <span class="hljs-string">"taiwo"</span>,
+            <span class="hljs-attr">"lastname"</span>: <span class="hljs-string">"bankole"</span>,
+            <span class="hljs-attr">"username"</span>: <span class="hljs-string">"taiwo_banks001"</span>,
+            <span class="hljs-attr">"phoneNumber"</span>: <span class="hljs-string">"08157113270"</span>,
+            <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>,
+            <span class="hljs-attr">"image"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"role"</span>: <span class="hljs-string">"user"</span>,
+            <span class="hljs-attr">"isActive"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">"isOtpVerified"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2024-12-21T21:02:54.790Z"</span>,
+            <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2024-12-21T21:13:47.538Z"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"taiwo-bankole-6767"</span>,
+            <span class="hljs-attr">"fullname"</span>: <span class="hljs-string">"taiwo bankole"</span>,
+            <span class="hljs-attr">"otpExpiresIn"</span>: <span class="hljs-string">"2024-12-21T21:15:31.190Z"</span>,
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"otpIssuedAt"</span>: <span class="hljs-string">"2024-12-21T21:13:31.181Z"</span>,
+            <span class="hljs-attr">"passwordChangedAt"</span>: <span class="hljs-string">"2024-12-21T21:13:47.438Z"</span>
+        }
+    },
+    <span class="hljs-attr">"token"</span>: <span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NjcyY2ZlNDZjZWJlNDgzMTVhOTEwNCIsImlhdCI6MTczNDgxOTMwNSwiZXhwIjoxNzM3NDExMzA1fQ.ZNf2pnpBDqdKFKisysPGl5U8mfzf_jvU80pBz8PkWcA"</span>
+}
+</code></pre>
+		<ul>
+			<li><strong>POST</strong> <code>/api/auth/signup</code><br />Registers a new user account. and then an OTP is sent when the user requests for an OTP</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"firstname"</span>: <span class="hljs-string">"taiwo"</span>,
+    <span class="hljs-attr">"lastname"</span>: <span class="hljs-string">"bankole"</span>,
+    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"taiwo_banks001"</span>,
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>,
+    <span class="hljs-attr">"phoneNumber"</span>: <span class="hljs-string">"08157113270"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"test1234"</span>,
+    <span class="hljs-attr">"passwordConfirm"</span>: <span class="hljs-string">"test1234"</span>
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>Response:</strong></p>
+				<ul>
+					<li><strong>201 OK:</strong> Account created successful</li>
+					<li><strong>400 Bad Request:</strong> No user with this email</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>Example Response:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Account created successful"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"user"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"taiwo"</span>,
+            <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>
+        }
+    }
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/auth/request-otp</code> Resends an OTP to the user’s email.</p>
+			</li>
+			<li>
+				<p><strong>Request Body:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>Response:</strong></p>
+				<ul>
+					<li><strong>200 OK:</strong> OTP verification code resent</li>
+					<li><strong>400 Bad Request:</strong> Account alreadty verified!</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>Example Response:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"OTP verification code resent"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"user"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"taiwo"</span>,
+            <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>
+        }
+    }
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/auth/verify-otp</code><br />Verifies the OTP entered by the user and marks their email as verified if successful.</p>
+			</li>
+			<li>
+				<p><strong>Request Body:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>,
+    <span class="hljs-attr">"otp"</span>: <span class="hljs-number">2280</span>
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>Response:</strong></p>
+				<ul>
+					<li><strong>200 OK:</strong> OTP verified successfully</li>
+					<li><strong>400 Bad Request:</strong> Account alreadty verified!</li>
+					<li><strong>400 Bad Request:</strong> OTP Expired, Request new OTP!</li>
+					<li><strong>400 Bad Request:</strong> Invalid OTP code!</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>Example Response:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"OTP verified successfully"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"user"</span>: {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"67672cfe46cebe48315a9104"</span>,
+            <span class="hljs-attr">"firstname"</span>: <span class="hljs-string">"taiwo"</span>,
+            <span class="hljs-attr">"lastname"</span>: <span class="hljs-string">"bankole"</span>,
+            <span class="hljs-attr">"username"</span>: <span class="hljs-string">"taiwo_banks001"</span>,
+            <span class="hljs-attr">"phoneNumber"</span>: <span class="hljs-string">"08157113270"</span>,
+            <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>,
+            <span class="hljs-attr">"image"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">"role"</span>: <span class="hljs-string">"user"</span>,
+            <span class="hljs-attr">"isActive"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">"isOtpVerified"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2024-12-21T21:02:54.790Z"</span>,
+            <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2024-12-21T21:13:47.538Z"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"taiwo-bankole-6767"</span>,
+            <span class="hljs-attr">"fullname"</span>: <span class="hljs-string">"taiwo bankole"</span>,
+            <span class="hljs-attr">"otpExpiresIn"</span>: <span class="hljs-string">"2024-12-21T21:15:31.190Z"</span>,
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"otpIssuedAt"</span>: <span class="hljs-string">"2024-12-21T21:13:31.181Z"</span>,
+            <span class="hljs-attr">"passwordChangedAt"</span>: <span class="hljs-string">"2024-12-21T21:13:47.438Z"</span>
+        }
+    }
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/auth/forgot-password/</code><br />Sends a password reset link to the user&#39;s registered email with a token embedded in the mail.</p>
+			</li>
+			<li>
+				<p><strong>Request Body:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"user@example.com"</span>
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/auth/reset-password/:token</code> Resets the user&#39;s password using a provided token in the forgot-password mail.</p>
+			</li>
+			<li>
+				<p><strong>Request Body:</strong></p>
+			</li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"123456789"</span>,
+    <span class="hljs-attr">"passwordConfirm"</span>: <span class="hljs-string">"123456789"</span>
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>GET</strong> <code>/api/auth/logout</code><br />Logs out an authenticated user.</p>
+			</li>
+			<li>
+				<p><strong>GET</strong> <code>/api/auth/users/me</code><br />Retrieves the currently authenticated user&#39;s information.</p>
+			</li>
+			<li>
+				<p><strong>DELETE</strong> <code>/api/auth/users/delete-account</code><br />Delete the currently authenticated user.</p>
+			</li>
+			<li>
+				<p><strong>PATHC</strong> <code>/api/auth/users/update-password</code><br />Change password for the currently authenticated user.</p>
+			</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"123456789"</span>,
+    <span class="hljs-attr">"newPassword"</span>: <span class="hljs-string">"1234567890$$"</span>,
+    <span class="hljs-attr">"newPasswordConfirm"</span>: <span class="hljs-string">"1234567890$$"</span>
+}
+</code></pre>
+		<h3 id="creator-profile-">Creator Profile:</h3>
+		<ul>
+			<li>
+				<p><strong>GET</strong> <code>/api/profile</code><br />Retrieves all user&#39;s profile information.</p>
+			</li>
+			<li>
+				<p><strong>GET</strong> <code>/api/profile/my-profile</code><br />Retrieves the currently authenticated user&#39;s profile information.</p>
+			</li>
+			<li>
+				<p><strong>POST</strong> <code>/api/profile/become-a-creator</code> Creates a creator profile for the athenticated user and make them a creator therefore they can now upload content. (Protected) - No request body needed.</p>
+			</li>
+		</ul>
+		<h3 id="wallet-">Wallet:</h3>
+		<ul>
+			<li>
+				<p><strong>POST</strong> <code>/api/wallets/create</code> Create a wallet for the authenticated user (Protected) - No request body needed</p>
+			</li>
+			<li>
+				<p><strong>GET</strong> <code>/api/wallets/my-balance</code><br />Retrieves the currently authenticated user&#39;s wallet balance.</p>
+			</li>
+		</ul>
+		<h3 id="tube-">Tube:</h3>
+		<ul>
+			<li>
+				<p><strong>GET</strong> <code>/api/channels/tubes?type=tube-short&amp;limit=10&amp;page=1</code> Lists all tubes randomly based on an algroithm (paginated).</p>
+			</li>
+			<li>
+				<p><strong>GET</strong> <code>/api/channels/tubes/{id}</code> Get a single tube by id</p>
+			</li>
+			<li>
+				<p><strong>POST</strong> <code>/api/channels/tubes/upload</code> Uploades a new tube. (protected)</p>
+			</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"A good way to make money"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam omnis, pariatur nobis numquam quidem quo?"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"tube-short"</span>,
+    <span class="hljs-attr">"video"</span>: {<span class="hljs-attr">"File Object"</span>},
+    <span class="hljs-attr">"thumbnail"</span>: {<span class="hljs-attr">"File Object"</span>},
+    <span class="hljs-attr">"hashTags"</span>: [<span class="hljs-string">"#makemoney2024"</span>, <span class="hljs-string">"#moneyisgood"</span>],
+}
+</code></pre>
+		<ul>
+			<li>
+				<strong>Important Note:</strong>
+				<ol>
+					<li>Description can be in any format including HTML or just ordinary text</li>
+					<li>Upload Everything together, Including the media (thumbnail and video) as well as the content details, But it as to be a formdata</li>
+				</ol>
+			</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Tube uploaded!"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"tube"</span>: {
+            <span class="hljs-attr">"creator"</span>: <span class="hljs-string">"67672cfe46cebe48315a9104"</span>,
+            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"A good way to make money"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam omnis, pariatur nobis numquam quidem quo?"</span>,
+            <span class="hljs-attr">"video"</span>: {
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/video/upload/v1735849346/grbxt58knxbcpsayjnrs.mp4"</span>,
+                <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"tube-327312812910"</span>,
+                <span class="hljs-attr">"duration_in_sec"</span>: <span class="hljs-number">102.23</span>
+            },
+            <span class="hljs-attr">"thumbnail"</span>: {
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/image/upload/v1735849346/grbxt58knxbcpsayjnrs.jpg"</span>,
+                <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"thumbnail-327312812910"</span>
+            },
+            <span class="hljs-attr">"views"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"likes"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"shares"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"saves"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"comments"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"tube-short"</span>,
+            <span class="hljs-attr">"hashTags"</span>: [<span class="hljs-string">"#makemoney2024"</span>, <span class="hljs-string">"#moneyisgood"</span>],
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"67673ee56260c6a83b4f5c03"</span>,
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2024-12-21T22:19:17.436Z"</span>,
+            <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2024-12-21T22:19:17.436Z"</span>,
+            <span class="hljs-attr">"lastModified"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"a-good-way-to-make-money"</span>,
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+        }
+    }
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>GET</strong> <code>/api/channels/tubes/my-tube</code> Get tubes related to the logged in creator. (protected)</p>
+			</li>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/channels/tubes/{id}</code> Updates an existing tube by Id. (protected)</p>
+			</li>
+			<li>
+				<p><strong>DELETE</strong> <code>/api/channels/tubes/{id}</code> Deletes a tube by Id. (protected)</p>
+			</li>
+		</ul>
+		<h3 id="audio-music-">Audio - music:</h3>
+		<ul>
+			<li><strong>POST</strong> <code>/api/channels/audio/upload</code> Uploades a new audio music. (protected)</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Imago dei - Gospel chant"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit. (optional)"</span>,
+    <span class="hljs-attr">"audio"</span>: {<span class="hljs-attr">"File Object"</span>},
+    <span class="hljs-attr">"coverImage"</span>: {<span class="hljs-attr">"File Object"</span>},
+}
+</code></pre>
+		<ul>
+			<li>
+				<strong>Important Note:</strong>
+				<ol>
+					<li>The title and audio field and cover image are required, others are optional</li>
+					<li>Upload Everything together using formdata</li>
+				</ol>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<strong>Response</strong>
+				<pre><code class="lang-json">{
+<span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+<span class="hljs-attr">"message"</span>: <span class="hljs-string">"Audio Uploaded"</span>,
+<span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"audio"</span>: {
+        <span class="hljs-attr">"creator"</span>: <span class="hljs-string">"67672cfe46cebe48315a9104"</span>,
+        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Imago dei - Gospel chant"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</span>,
+        <span class="hljs-attr">"streams"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"likes"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">"audio"</span>: {
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/video/upload/v1735905353/Imago%20dei%20-%20Gospel%20chant.mp3"</span>,
+            <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"audio-84543873232"</span>,
+            <span class="hljs-attr">"duration_in_sec"</span>: <span class="hljs-number">102.23</span>
+        },
+        <span class="hljs-attr">"coverImage"</span>: {
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/image/upload/v1735905531/1735905528566.png"</span>,
+            <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"coverimage-84543873232"</span>
+        },
+        <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"6777d0fa362b946f247b3e2d"</span>,
+        <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2025-01-03T11:58:50.461Z"</span>,
+        <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2025-01-03T11:58:50.461Z"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"imago-dei-gospel-chant"</span>,
+        <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+    }
+}
+}
+</code></pre>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<p><strong>GET</strong> <code>/api/channels/music/my-music</code> Get music related to the logged in creator. (protected)</p>
+			</li>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/channels/music/{id}</code> Updates an existing music by Id. (protected)</p>
+			</li>
+			<li>
+				<p><strong>DELETE</strong> <code>/api/channels/music/{id}</code> Deletes a music by Id. (protected)</p>
+			</li>
+		</ul>
+		<h3 id="audio-podcasts-">Audio - podcasts:</h3>
+		<ul>
+			<li><strong>POST</strong> <code>/api/channels/podcast/create</code> Create a new podcast. (protected)</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Menism - Podcast for men"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</span>,
+    <span class="hljs-attr">"coverImage"</span>: {<span class="hljs-attr">"File Object"</span>},
+}
+</code></pre>
+		<ul>
+			<li>
+				<strong>Response</strong>
+				<pre><code class="lang-json">{
+<span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+<span class="hljs-attr">"message"</span>: <span class="hljs-string">"Podcast Uploaded"</span>,
+<span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"podcast"</span>: {
+        <span class="hljs-attr">"creatorProfile"</span>: <span class="hljs-string">"678e0e14abb0db93f3706e18"</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Menism - Podcast for men"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</span>,
+        <span class="hljs-attr">"coverImage"</span>: {
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/image/upload/c_fill,g_auto,h_500,q_70,w_500/podcast-coverimage-1737405724832?_a=BAMCkGOY0"</span>,
+            <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"podcast-coverimage-1737405724832"</span>
+        },
+        <span class="hljs-attr">"episodes"</span>: [],
+        <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"678eb5221487e0be6ee41b3e"</span>,
+        <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2025-01-20T20:42:10.607Z"</span>,
+        <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2025-01-20T20:42:10.607Z"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"menism-podcast"</span>,
+        <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+    }
+}
+}
+</code></pre>
+			</li>
+		</ul>
+		<ul>
+			<li><strong>POST</strong> <code>/api/channels/podcast/episode/{id}</code> Upload a new podcast episode. (protected)</li>
+			<li><strong>Request Body:</strong></li>
+		</ul>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Menism - Episode 1"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit"</span>,
+    <span class="hljs-attr">"audio"</span>: {<span class="hljs-attr">"File Object"</span>},
+}
+</code></pre>
+		<ul>
+			<li>
+				<strong>Response</strong>
+				<pre><code class="lang-json">{
+<span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+<span class="hljs-attr">"message"</span>: <span class="hljs-string">"Episode Uploaded"</span>,
+<span class="hljs-attr">"data"</span>: {
+    <span class="hljs-attr">"podcast"</span>: {
+        <span class="hljs-attr">"coverImage"</span>: {
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/image/upload/c_fill,g_auto,h_500,q_70,w_500/podcast-coverimage-1737405724832?_a=BAMCkGOY0"</span>,
+            <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"podcast-coverimage-1737405724832"</span>
+        },
+        <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"678eb5221487e0be6ee41b3e"</span>,
+        <span class="hljs-attr">"creatorProfile"</span>: {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"678e0e14abb0db93f3706e18"</span>
+        },
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Menism Podcast"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</span>,
+        <span class="hljs-attr">"episodes"</span>: [
+            {
+                <span class="hljs-attr">"audio"</span>: {
+                    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/video/upload/v1737406051/podcast-episode-1737406035598.mp3"</span>,
+                    <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"podcast-episode-1737406035598"</span>,
+                    <span class="hljs-attr">"duration_in_sec"</span>: <span class="hljs-number">219.846531</span>
+                },
+                <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Episode 1"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</span>,
+                <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"678eb67070e1de878190ee00"</span>
+            }
+        ],
+        <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2025-01-20T20:42:10.607Z"</span>,
+        <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2025-01-20T20:47:44.144Z"</span>,
+        <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"menism-podcast"</span>,
+        <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+    }
+}
+}
+</code></pre>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<p><strong>GET</strong> <code>/api/channels/podcasts/my-podcasts</code> Get podcasts related to the logged in creator. (protected)</p>
+			</li>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/channels/podcasts/{id}</code> Updates an existing podcasts by Id. (protected)</p>
+			</li>
+			<li>
+				<p><strong>DELETE</strong> <code>/api/channels/podcasts/{id}</code> Deletes a podcasts by Id. (protected)</p>
+			</li>
+		</ul>
+		<h3 id="image-books">Image - Books</h3>
+		<p>
+			<strong>POST</strong> <code>/api/channels/books/upload</code>
+			Upload an Ebook(protected)
+			<strong>Request Body</strong>
+		</p>
+		<pre><code class="lang-json">{
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"The Art of Programming"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"Berula"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A comprehensive guide to mastering programming"</span>,
+  <span class="hljs-attr">"genre"</span>: [<span class="hljs-string">"Programming"</span>, <span class="hljs-string">"Education"</span>],
+  <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"678e0ddcabb0db93f3706e14"</span>,
+  <span class="hljs-attr">"coverImage"</span>: {<span class="hljs-attr">"File Object"</span>},
+  <span class="hljs-attr">"ebook"</span>: {<span class="hljs-attr">"File Object"</span>}
+}
+</code></pre>
+		<p><strong>Response</strong></p>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Ebook uploaded successfully"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"book"</span>: {
+            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"The Art of Programming"</span>,
+            <span class="hljs-attr">"specification"</span>: {
+                <span class="hljs-attr">"author"</span>: <span class="hljs-string">"Shapale"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A comprehensive guide to master programming"</span>,
+                <span class="hljs-attr">"genre"</span>: [
+                    [<span class="hljs-string">"Programming"</span>, <span class="hljs-string">"Education"</span>]
+                ]
+            },
+            <span class="hljs-attr">"creatorProfile"</span>: <span class="hljs-string">"678e0e14abb0db93f3706e18"</span>,
+            <span class="hljs-attr">"coverImage"</span>: {
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/image/upload/c_fill,g_auto,h_500,q_70,w_500/book-cover-1738324880584?_a=BAMCkGUq0"</span>,
+                <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"book-cover-1738324880584"</span>
+            },
+            <span class="hljs-attr">"file"</span>: {
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/raw/upload/v1738324886/ebook-file-1738324885021"</span>,
+                <span class="hljs-attr">"fileType"</span>: <span class="hljs-string">"pdf"</span>
+            },
+            <span class="hljs-attr">"likes"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"679cbb966ed9204a2696f5e9"</span>,
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2025-01-31T12:01:26.611Z"</span>,
+            <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2025-01-31T12:01:26.611Z"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"the-art-of-programming"</span>,
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+        }
+    }
+}
+</code></pre>
+		<p>
+			<strong>POST</strong> <code>/api/channels/books/upload-audio</code>
+			Upload an audiobook(protected)
+			<strong>Request Body</strong>
+		</p>
+		<pre><code class="lang-json">{
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Javascript mastery"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"Achebe"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A comprehensive guide for programming"</span>,
+  <span class="hljs-attr">"genre"</span>: <span class="hljs-string">"Programming / Education"</span>,
+  <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"678e0ddcabb0db93f3706e14"</span>,
+  <span class="hljs-attr">"coverImage"</span>: {<span class="hljs-attr">"File Object"</span>},
+  <span class="hljs-attr">"ebook"</span>: {<span class="hljs-attr">"File Object"</span>}
+}
+</code></pre>
+		<p><strong>Response</strong></p>
+		<pre><code class="lang-json">{
+    <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Audiobook uploaded successfully"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"book"</span>: {
+            <span class="hljs-attr">"creatorProfile"</span>: <span class="hljs-string">"678e0e14abb0db93f3706e18"</span>,
+            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Javascript mastery"</span>,
+            <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"678e0ddcabb0db93f3706e14"</span>,
+            <span class="hljs-attr">"coverImage"</span>: {
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/image/upload/c_fill,g_auto,h_500,q_70,w_500/book-coverimage-1738323065135?_a=BAMCkGUq0"</span>,
+                <span class="hljs-attr">"public_id"</span>: <span class="hljs-string">"book-coverimage-1738323065135"</span>
+            },
+            <span class="hljs-attr">"specification"</span>: {
+                <span class="hljs-attr">"author"</span>: <span class="hljs-string">"Achebe"</span>,
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A comprehensive guide for programming"</span>,
+                <span class="hljs-attr">"genre"</span>: [<span class="hljs-string">"Programming"</span>, <span class="hljs-string">"Education"</span>]
+            },
+            <span class="hljs-attr">"audio"</span>: {
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://res.cloudinary.com/dy3bwvkeb/video/upload/v1738323069/podcast-episode-1738323065163.mp3"</span>,
+                <span class="hljs-attr">"duration_in_sec"</span>: <span class="hljs-number">7.288163</span>,
+            },
+            <span class="hljs-attr">"stream"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"likes"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"679cb480f74a7553a7c38011"</span>,
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2025-01-31T11:31:12.426Z"</span>,
+            <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2025-01-31T11:31:12.426Z"</span>,
+            <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"javascript-mastery"</span>,
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+        }
+    }
+}
+</code></pre>
+		<ul>
+			<li>
+				<p><strong>PATCH</strong> <code>/api/channels/books/{id}</code> Updates an existing podcasts by Id. (protected)</p>
+			</li>
+			<li>
+				<p><strong>DELETE</strong> <code>/api/channels/books/{id}</code> Deletes a podcasts by Id. (protected)</p>
+			</li>
+		</ul>
+	</body>
+</html>
